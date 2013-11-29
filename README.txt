@@ -1,3 +1,6 @@
-######### README FILE
+# ---------------------------------------------------------------------------------------------
+# JR_PROJECTS - TOOLS TO CREATE PROJECT AND FILE TEMPLATES FOR A CUSTOMIZED WORKFLOW
+# ---------------------------------------------------------------------------------------------
 
-My own set of tools to create project and file templates for a customized workflow.
+Documentation on the current supported API is available on the Shotgun Support website at 
+https://support.shotgunsoftware.com/forums/48807-developer-api-info
