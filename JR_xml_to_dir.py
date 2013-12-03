@@ -68,22 +68,89 @@ for child in root:
 								two = a[1].text
 								add = [one, two]
 								edgeList.append(add)
-								#print '        >>> source = ', a[0].text
-								#print '        >>> target = ', a[1].text
+								print '        >>> source = ', a[0].text
+								print '        >>> target = ', a[1].text
 #print 'folders = ', folderList
 #print 'shared = ', sharedFolderList
 #print 'files = ', fileList
 #print 'dir = ', directoryList
 #print 'connections = ', edgeList
-iii = [directoryList[0][0], '#0099FF', 'C:\\Test']
-folderList.append(iii)
+#iii = [directoryList[0][0], '#0099FF', 'C:\\Test']
+#folderList.append(iii)
+
+#for i in edgeList:
+#	for x in folderList:
+#		if i[1] == x[0]:
+#			print x[2]
+
+#path = []
+#for i in edgeList:
+#	temp = ''
+#	if i[0] == directoryList[0][0]: # we've reached the last connection
+#		temp += directoryList[0][2] + '\\'
+#		temp += str([i for i in folderList if i[1] in i][0][2])
+#		path.append(temp)
+#print path
+end = directoryList[0][0]
+pathList = []
+def pp(sourceNumber):
+	return [i for i in folderList if sourceNumber in i][0][2]
+def pathFinder():
+	a = ''
+	#return [i for i in folderList if sourceNumber in i][0][2]
+	for i in edgeList:
+		print 'went through'
+		source = i[0]
+		print source, '   source #'
+		if i[0] != end:
+			if i[1] == source:
+				pass
+			else:
+				print pp(i[1]), '  pathfinder', i
+				a += pp(i[1])
+			a += pp(i[0])
+			a += '//'
+		#pathList.append(a)
+	print pathList
+#
+pathFinder()
+"""
+we have the connections
+go through each connections
+
+now check in each one, the id # in the target
 
 for i in edgeList:
-	for x in folderList:
-		if i[1] == x[0]:
-			print x[2]
+	if i[0] == directoryList[0][0]: # we've reached the last connection
+		path += [i for i in folderList if i[1] in i][0][2]
+		path += folderList[0] + folderList[1]
+		print path
+		this is the directory so we can stop the filepath name
+	else:
+		run a function()
 
 
+end = directoryList[0][0]
+for i in edgeList:
+	source = i[1]
+	if i[0] != end:
+		if i[0] == source:
+			pass
+		else:
+			a += pathFinder(i[1])
+		a += pathFinder(i[0])
+print a
+#
+def pathFinder(sourceNumber):
+	return [i for i in folderList if i[sourceNumber] in i][0][2]
+
+	source = [i for i in edgeList if i[1] in i][0][2]
+		path += 
+
+
+"""
+xx = [i for i in folderList if '2' in i][0][2]
+print xx
 #numbers = []
 #print folderList
 #for x in edgeList:
