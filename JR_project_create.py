@@ -14,7 +14,7 @@ class Directory():
 		self.userName = os.path.expanduser("~")
 	def Run(self):
 		self.tk.geometry('200x160+600+300')
-		self.tk.iconbitmap(default= self.userName + "\Documents\GitHub\JR_Project\icons\\transparent.ico")
+		self.tk.iconbitmap(default= self.userName + "\Documents\GitHub\JR_Project\icons\\jr_icon.ico")
 		#TITLE
 		self.tk.title('XML>DIR')
 		# COLOURS
