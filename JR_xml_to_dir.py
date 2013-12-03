@@ -77,14 +77,26 @@ for child in root:
 #print 'connections = ', edgeList
 iii = [directoryList[0][0], '#0099FF', 'C:\\Test']
 folderList.append(iii)
-numbers = []
+
+for i in edgeList:
+	for x in folderList:
+		if i[1] == x[0]:
+			print x[2]
+
+
+#numbers = []
 #print folderList
-for x in edgeList:
-	for y in x:
-		print y
-		numbers.append(y)
-numbers = set(numbers); numbers = list(numbers); numbers = sorted(numbers)
-print numbers
+#for x in edgeList:
+#	for y in x:
+#		print y
+#		numbers.append(y)
+#numbers = set(numbers); numbers = list(numbers); numbers = sorted(numbers)
+#print numbers
+#for i in range( len(numbers) ):
+#	if numbers[i] in folderList[0]:
+#		print 'yes'
+#		print folderList[0]
+
 #for i in edgeList:
 #	print i
 #	for x in edgeList:
