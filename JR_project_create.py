@@ -11,9 +11,10 @@ class Directory():
 		self.projectValue = ''
 		self.sceneValue = ''
 		self.shotValue = ''
+		self.userName = os.path.expanduser("~")
 	def Run(self):
 		self.tk.geometry('200x160+600+300')
-		#self.tk.iconbitmap(default='transparent.ico')
+		self.tk.iconbitmap(default= self.userName + "\Documents\GitHub\JR_Project\icons\\transparent.ico")
 		#TITLE
 		self.tk.title('XML>DIR')
 		# COLOURS
