@@ -68,13 +68,13 @@ for child in root:
 								two = a[1].text
 								add = [one, two]
 								edgeList.append(add)
-								print '        >>> source = ', a[0].text
-								print '        >>> target = ', a[1].text
-print 'folders = ', folderList
-print 'shared = ', sharedFolderList
-print 'files = ', fileList
-print 'dir = ', directoryList
-print 'connections = ', edgeList
+								#print '        >>> source = ', a[0].text
+								#print '        >>> target = ', a[1].text
+#print 'folders = ', folderList
+#print 'shared = ', sharedFolderList
+#print 'files = ', fileList
+#print 'dir = ', directoryList
+#print 'connections = ', edgeList
 #iii = [directoryList[0][0], '#0099FF', 'C:\\Test']
 #folderList.append(iii)
 
@@ -91,6 +91,7 @@ print 'connections = ', edgeList
 #		temp += str([i for i in folderList if i[1] in i][0][2])
 #		path.append(temp)
 #print path
+"""
 def path(number):
 	if int(number) != 0:
 		x = [i for i in folderList if number in i]
@@ -104,6 +105,45 @@ def path(number):
 for i in edgeList:
 	print i
 	path(i[0])
+"""
+dirTemp = []
+dirFinal = []
+def again(source):
+	x = [i for i in folderList if source in i]
+	if x == []:
+		pass
+		#print 'next'
+	else:
+		#print x[0][0], 'xxxxx'
+		dirTemp.append(x[0])
+		a = [i for i in edgeList if x[0][0] in i]
+		#print a[0][0]
+		again(a[0][0])
+
+	#print x
+for i in edgeList:
+	#print i
+	lastItem = [x for x in folderList if i[1] in x]
+	dirTemp.append(lastItem[0])
+	again(i[0])
+	dirTemp.append(['C:'])
+	dirFinal.append(dirTemp)
+
+	dirTemp = []
+a = ''
+for i in dirFinal:
+	for x in reversed(i):
+		a += x[-1] + '\\'
+	print a
+	a = ''
+	#print folderList
+	#a = [x for x in folderList if i[0] in x]
+	#print a
+	#if i[0] == 'yes':
+	#	print 'yes'
+	#else:
+	#	print 'no'
+	#if i[0] in [x for x in folderList][0]
 
 
 """
