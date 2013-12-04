@@ -70,11 +70,11 @@ for child in root:
 								edgeList.append(add)
 								print '        >>> source = ', a[0].text
 								print '        >>> target = ', a[1].text
-#print 'folders = ', folderList
-#print 'shared = ', sharedFolderList
-#print 'files = ', fileList
-#print 'dir = ', directoryList
-#print 'connections = ', edgeList
+print 'folders = ', folderList
+print 'shared = ', sharedFolderList
+print 'files = ', fileList
+print 'dir = ', directoryList
+print 'connections = ', edgeList
 #iii = [directoryList[0][0], '#0099FF', 'C:\\Test']
 #folderList.append(iii)
 
@@ -91,6 +91,22 @@ for child in root:
 #		temp += str([i for i in folderList if i[1] in i][0][2])
 #		path.append(temp)
 #print path
+def path(number):
+	if int(number) != 0:
+		x = [i for i in folderList if number in i]
+		y = [i for i in edgeList if x[0][0] in i]
+		#print y[0][0], ' this is y'
+		#print x[0][0], ' this is x'
+		path(y[0][0])
+	else:
+		print 'next'
+
+for i in edgeList:
+	print i
+	path(i[0])
+
+
+"""
 end = directoryList[0][0]
 pathList = []
 def pp(sourceNumber):
@@ -114,6 +130,9 @@ def pathFinder():
 	print pathList
 #
 pathFinder()
+"""
+
+
 """
 we have the connections
 go through each connections
@@ -149,8 +168,8 @@ def pathFinder(sourceNumber):
 
 
 """
-xx = [i for i in folderList if '2' in i][0][2]
-print xx
+#xx = [i for i in folderList if '2' in i][0][2]
+#print xx
 #numbers = []
 #print folderList
 #for x in edgeList:
