@@ -1,4 +1,6 @@
 import xml.etree.ElementTree as ET
+import os
+import re
 tree = ET.parse('xml_test_01.xml')
 root = tree.getroot()
 ############################
@@ -23,17 +25,13 @@ for child in root:
 				ii = a.get(a.keys()[i])
 				if ii == 'node':
 					identity =  a[0].text
-					#print '    >>', ii
-					#print '        >>> id =', a[0].text
 					for b in a:
 						if b.tag == 'section':
 							x = b.keys()
 							for i in range(len(x)):
 								iii =  b.get(b.keys()[i])
-								#print '        >>>', iii
 								if iii == 'graphics':
 									item = b[5].text
-									#print '        >>> colour =', b[5].text
 									if item == '#FFCC00':
 										node = 'folder'
 									elif item == '#00CC00':
@@ -46,7 +44,6 @@ for child in root:
 										node == 'NA'
 								elif iii == 'LabelGraphics':
 									label = b[0].text
-									#print '        >>> label =', b[0].text
 								add = [identity, item, label] # collection of all of the nodes added to the scene
 					if node == 'folder':
 						folderList.append(add)
@@ -57,7 +54,6 @@ for child in root:
 					elif node == 'sharedFolder':
 						sharedFolderList.append(add)
 				elif ii == 'edge':
-					#print '    >>', ii
 					for b in a:
 						if b.tag == 'section':
 							x = b.keys()
@@ -67,13 +63,11 @@ for child in root:
 								two = a[1].text
 								add = [one, two]
 								edgeList.append(add)
-								#print '        >>> source = ', a[0].text
-								#print '        >>> target = ', a[1].text
-print 'folders = ', folderList
-print 'shared = ', sharedFolderList
-print 'files = ', fileList
-print 'dir = ', directoryList
-print 'connections = ', edgeList
+#print 'folders = ', folderList
+#print 'shared = ', sharedFolderList
+#print 'files = ', fileList
+#print 'dir = ', directoryList
+#print 'connections = ', edgeList
 total = []
 def createTotal():
 	for i in folderList:
@@ -83,11 +77,7 @@ def createTotal():
 	for i in sharedFolderList:
 		total.append(i)
 createTotal()
-print total, 'this is total'
-a = [['2', '11'], ['2', '12'], ['6', '2']]
-for i in a:
-	if i[1] == '2':
-		print i
+
 dirTemp = []
 dirFinal = []
 def again(source):
@@ -101,16 +91,35 @@ def again(source):
 			if i[1] == x[0][0]:
 				again(i[0])
 for i in edgeList:
-	print i, 'iiiiiiiiiii'
 	lastItem = [x for x in total if i[1] in x]
+	#print lastItem, ' this is lastItem'
 	dirTemp.append(lastItem[0])
 	again(i[0])
-	dirTemp.append(['C:'])
+	dirTemp.append(['C:\Users\jricker\Desktop'])
 	dirFinal.append(dirTemp)
 	dirTemp = []
 a = ''
+counter = 0
 for i in dirFinal:
 	for x in reversed(i):
-		a += x[-1] + '\\'
-	print a
+		if counter != 0:
+			a += '\\' +x[-1]
+		else:
+			a += x[-1]
+		counter += 1
+	#if not os.path.exists(a):
+	#	os.makedirs(a)
+	if a[:1] == '\\':
+		d =  a[1:]
+	else:
+		d = a
+	s = re.compile(r'/*\\') # this finds the backslashes in the to be created directory
+	f = s.finditer(d)
+	g = [ x.span() for x in f ]
+	h= d[g[-1][0] : ][1:] # this is a long winded way, we already ahve this information when we parse the first item. Just get it from there?
+	if '.' in h:
+		#print h
+		k = h.find('.')
+		print h[k:]
+
 	a = ''
