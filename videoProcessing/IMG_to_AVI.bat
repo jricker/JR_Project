@@ -6,5 +6,5 @@ goto theend
 :ok
 echo Ok, done
 :theend
-"%~4" -i "%~5.avi" -codec:v libx264 -profile:v high -preset slow -b:v 500k -maxrate 500k -bufsize 1000k -b:a 128k "%~5_ProRes.mov"
+"%~4" -i "%~5.avi" -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 "%~5_ProRes.mov"
 del "%~5.avi"
