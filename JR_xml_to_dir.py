@@ -8,7 +8,8 @@ edgeList = []
 folderList = []
 sharedFolderList = []
 directoryList = []
-mainDirectory = 'C:\Users\jricker\Desktop'
+userName = os.path.expanduser("~")
+mainDirectory = userName + '\Desktop'
 masterXML = 'xml_test_07.xml'
 projectName = 'PROJECTX'
 sceneAmount = 5
@@ -88,7 +89,7 @@ def getFileExtList (dirPath,uniq=True,sorted=True):
     if sorted:
         extList.sort()
     return extList
-defaultFileLocation = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\libraries\\files"
+defaultFileLocation = userName + "\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\libraries\\files"
 fileLibrary = getFileExtList(defaultFileLocation)
 #print fileLibrary
 total = []
