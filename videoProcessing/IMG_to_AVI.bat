@@ -6,5 +6,6 @@ goto theend
 :ok
 echo Ok, done
 :theend
-"%~4" -i "%~5.avi" -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 "%~5_ProRes.mov"
+"%~4" -i "%~5.avi" -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 "%~5_preview.mov"
 del "%~5.avi"
+"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe" "%~5_preview.mov"
