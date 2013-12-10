@@ -11,8 +11,8 @@ directoryList = []
 mainDirectory = 'C:\Users\jricker\Desktop'
 masterXML = 'xml_test_07.xml'
 projectName = 'PROJECTX'
-sceneAmount = 5
-shotAmount = 19
+sceneAmount = 4
+shotAmount = 15
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()
@@ -166,10 +166,7 @@ for i in dirFinal:
 		#print oldFile
 		if not os.path.exists(fileDirectory):
 			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
-		else:
-			shutil.copyfile(oldFile, newFile) 
+		shutil.copyfile(oldFile, newFile) 
 	if p == []:
 		#pass
 		#print eee
@@ -226,10 +223,7 @@ for i in reversed(iterationList):
 		newFile = fileDirectory + h
 		if not os.path.exists(fileDirectory):
 			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
-		else:
-			shutil.copyfile(oldFile, newFile) 
+		shutil.copyfile(oldFile, newFile) 
 	if p == []:
 		#pass
 		#print ddd

@@ -2,7 +2,6 @@ import sys
 import os
 from functools import partial
 from Tkinter import *
-from PIL import Image, ImageTk
 from tkFileDialog import askopenfilename, askdirectory
 class Directory():
 	def __init__(self):
@@ -20,34 +19,41 @@ class Directory():
 		self.tk.title('CINEMATICS')
 		# COLOURS
 		bgColour = '#2f2f2f'
-		self.btnColour1 = '#136ec7'
 		self.btnColour2 = '#098400'
 		input_bgColour = '#cecece'
 		input_fgColour = 'black'
-		# TEXT
-		btnFont = 'Arial'
+		# LABELS
+		labelOffset = 25
+		project = Label(text = 'Project :', bg = bgColour, fg = 'white').place(x=8, y=5)
+		scene = Label(text = 'Scene :', bg = bgColour, fg = 'white').place(x=14, y=5+labelOffset)
+		shots = Label(text = 'Shots :', bg = bgColour, fg = 'white').place(x=15.5, y=30+labelOffset)
+		## INPUT FIELDS
+		self.project_field = Entry(bg = input_bgColour, fg=input_fgColour, bd = 0)
+		self.scene_field = Entry(bg = input_bgColour, fg=input_fgColour, bd = 0)
+		self.shot_field = Entry(bg = input_bgColour, fg=input_fgColour, bd = 0)
+		self.project_field.configure(text = 'test')
+		# INPUT FIELD POSITION
+		self.project_field.place(x=60, y= 8)
+		self.scene_field.place(x=60, y= 8+labelOffset )
+		self.shot_field.place(x=60, y=33 + labelOffset )
 		# BUTTONS
-		self.XMLBtn = Button(text = 'XML > DIR', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'XML') )
-		self.IMGBtn = Button(text = 'IMG > MOV', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'IMG') )
-		self.AVIBtn = Button(text = 'AVI > MOV', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'AVI') )
-		self.RENAMEBtn = Button(text = 'RENAME', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'RENAME') )
+		self.directoryBtn = Button(text = 'DIR', bg = bgColour, fg = 'white', width = 200, height = 03 , command = partial(self.assignValues, 'DIR') )
+		self.XMLBtn = Button(text = 'XML', bg = bgColour, fg = 'white', width = 200 , height = 03 , command = partial(self.assignValues, 'XML') )
+		self.buildBtn = Button(text = 'BUILD', bg = bgColour, fg = 'white', width = 200 , height = 03 , command = partial(self.buildDirectory) )
 		# BUTTON POSITION
-		self.RENAMEBtn.pack(side = 'bottom' )
-		self.AVIBtn.pack(side = 'bottom' )
-		self.IMGBtn.pack(side = 'bottom' )
+		self.buildBtn.pack(side = 'bottom' )
 		self.XMLBtn.pack(side = 'bottom' )
+		self.directoryBtn.pack(side = 'bottom' )
 		# FILE OPTIONS
 		self.file_opt = options = {}
-		options['filetypes'] = [ ('XML Files', '.xml')] # add options to the dictionary
+		#options['defaultextension'] = '.txt'
+		options['filetypes'] = [ ('XML Files', '.xml')]
 		#print self.file_opt
-		# GHOST IMAGE
-		imageFile = self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\UI_header.jpg"
-		image1 = ImageTk.PhotoImage(Image.open(imageFile))
-		panel1 = Label(image=image1)
-		#panel1.pack()
-		panel1.pack(side = 'top', expand = 'yes')
+		#options['initialdir'] = 'C:\\'
+		#options['initialfile'] = 'myfile.txt'
+		#options['parent'] = root
+		#options['title'] = 'This is a title'
 		# FINAL CONFIGURATIONS
-		self.tk.resizable(width=FALSE, height=FALSE)
 		self.tk.configure(background= bgColour)
 		self.tk.bind('<Escape>', quit) # BIND TO ESC KEY
 		self.tk.mainloop()

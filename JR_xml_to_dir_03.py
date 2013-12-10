@@ -2,21 +2,17 @@ import xml.etree.ElementTree as ET
 import os
 import re
 import shutil # this module is used to copy files across to other directories
+tree = ET.parse('xml_test_06.xml')
+root = tree.getroot()
 ############################
 fileList = []
 edgeList = []
 folderList = []
 sharedFolderList = []
 directoryList = []
-mainDirectory = 'C:\Users\jricker\Desktop'
-masterXML = 'xml_test_07.xml'
-projectName = 'PROJECTX'
-sceneAmount = 5
-shotAmount = 19
-############################
-tree = ET.parse(masterXML)
-root = tree.getroot()
-############################
+projectName = 'E3'
+sceneAmount = 2
+shotAmount = 4
 for child in root:
 	if child.tag == 'section':
 		x = child.keys()
@@ -90,7 +86,7 @@ def getFileExtList (dirPath,uniq=True,sorted=True):
     return extList
 defaultFileLocation = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\libraries\\files"
 fileLibrary = getFileExtList(defaultFileLocation)
-#print fileLibrary
+print fileLibrary
 total = []
 def createTotal():
 	for i in folderList:
@@ -118,7 +114,7 @@ for i in edgeList:
 	#print lastItem, ' this is lastItem'
 	dirTemp.append(lastItem[0])
 	again(i[0])
-	dirTemp.append([mainDirectory])
+	dirTemp.append(['C:\Users\jricker\Desktop'])
 	dirFinal.append(dirTemp)
 	dirTemp = []
 a = ''
@@ -134,7 +130,6 @@ for i in dirFinal:
 		else:
 			a += x[-1]
 		counter += 1
-		#print a
 	#if not os.path.exists(a):
 	#	os.makedirs(a)
 	if a[:1] == '\\':
@@ -158,85 +153,34 @@ for i in dirFinal:
 		#pass
 		#print h
 		#print p
-		#print eee
-		fileDirectory = eee[:(-1*(len(h)) )] # finds the directory from where to copy and past it
+		#print d
+		fileDirectory = d[:(-1*(len(h)) )] # finds the directory from where to copy and past it
 		oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
 		newFile = fileDirectory + h
 		#print newFile
 		#print oldFile
-		if not os.path.exists(fileDirectory):
-			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
-		else:
-			shutil.copyfile(oldFile, newFile) 
+		#if not os.path.exists(fileDirectory):
+		#	os.makedirs(fileDirectory)
+		#shutil.copyfile(oldFile, newFile) 
 	if p == []:
-		#pass
-		#print eee
-		if not os.path.exists(eee):
-			os.makedirs(eee)
+		pass
+		#print d
+		#if not os.path.exists(d):
+		#	os.makedirs(d)
 	if '.' in h:
 		#print h
 		k = h.find('.')
 		#print h[k:]
 	a = ''
 
-
-iterationList = []
 while sceneAmount != sceneCounter:
 	sceneCounter += 1
-	if len(str(sceneCounter)) == 1:
-		sceneCounterA = '0' + str(sceneCounter)
 	for i in sceneList:
-		temp = i.replace('sc##', ('sc' + str(sceneCounterA)) )
+		temp = i.replace('sc##', ('sc' + str(sceneCounter)) )
 		shotList.append(temp)
+
 while shotAmount != shotCounter:
 	shotCounter += 1
-	if len(str(shotCounter)) == 1:
-		shotCounterA = '0' + str(shotCounter*10)
-	elif len(str(shotCounter)) == 2:
-		shotCounterA = str(shotCounter*10)
 	for i in shotList:
-		temp2 = i.replace('sh##', ('sh' + str(shotCounterA)) )
-		iterationList.append(temp2)
-
-
-aaa = ''
-counter2 = 0
-for i in reversed(iterationList):
-		#print a
-	#if not os.path.exists(a):
-	#	os.makedirs(a)
-	if i[:1] == '\\':
-		ddd =  i[1:]
-	else:
-		ddd = i
-	#print ddd
-	#print ddd
-	s = re.compile(r'/*\\') # this finds the backslashes in the to be created directory
-	f = s.finditer(ddd)
-	g = [ x.span() for x in f ]
-	h= ddd[g[-1][0] : ][1:] # this is a long winded way, we already ahve this information when we parse the first item. Just get it from there?
-	p = [x for x in fileLibrary if h.endswith((x))]
-	if p != []:
-		#print h
-		#print fileDirectory
-		fileDirectory = ddd[:(-1*(len(h)) )] # finds the directory from where to copy and past it
-		oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
-		newFile = fileDirectory + h
-		if not os.path.exists(fileDirectory):
-			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
-		else:
-			shutil.copyfile(oldFile, newFile) 
-	if p == []:
-		#pass
-		#print ddd
-		if not os.path.exists(ddd):
-			os.makedirs(ddd)
-	if '.' in h:
-		#print h
-		k = h.find('.')
-		#print h[k:]
-	aaa = ''
+		temp2 = i.replace('sh##', ('sh' + str(shotCounter)) )
+		print temp2
