@@ -11,9 +11,9 @@ directoryList = []
 userName = os.path.expanduser("~")
 mainDirectory = userName + '\Desktop'
 masterXML = 'xml_test_07.xml'
-projectName = 'PROJECTX'
-sceneAmount = 5
-shotAmount = 19
+projectName = 'E3'
+sceneAmount = 3
+shotAmount = 10
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()
@@ -101,7 +101,7 @@ def createTotal():
 	for i in sharedFolderList:
 		total.append(i)
 createTotal()
-
+###
 dirTemp = []
 dirFinal = []
 def again(source):
@@ -116,12 +116,12 @@ def again(source):
 				again(i[0])
 for i in edgeList:
 	lastItem = [x for x in total if i[1] in x]
-	#print lastItem, ' this is lastItem'
 	dirTemp.append(lastItem[0])
 	again(i[0])
 	dirTemp.append([mainDirectory])
 	dirFinal.append(dirTemp)
 	dirTemp = []
+###
 a = ''
 counter = 0
 shotCounter = 0
@@ -135,14 +135,10 @@ for i in dirFinal:
 		else:
 			a += x[-1]
 		counter += 1
-		#print a
-	#if not os.path.exists(a):
-	#	os.makedirs(a)
 	if a[:1] == '\\':
 		d =  a[1:]
 	else:
 		d = a
-	#print d
 	if '*NAME*' in d:
 		d = d.replace('*NAME*', projectName)
 	s = re.compile(r'/*\\') # this finds the backslashes in the to be created directory
@@ -152,34 +148,24 @@ for i in dirFinal:
 	p = [x for x in fileLibrary if h.endswith((x))]
 	if 'sc##' in d:
 		sceneList.append(d)
-		#shotList.append(d)
 	else:
 		eee = d
 	if p != []:
-		#pass
-		#print h
-		#print p
-		#print eee
 		fileDirectory = eee[:(-1*(len(h)) )] # finds the directory from where to copy and past it
-		oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
-		newFile = fileDirectory + h
-		#print newFile
-		#print oldFile
-		if not os.path.exists(fileDirectory):
-			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
+		if fileDirectory.endswith(("\\")):
+			oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
+			newFile = fileDirectory + h
+			if not os.path.exists(fileDirectory):
+				os.makedirs(fileDirectory)
+			if os.path.exists(newFile):
+				print 'file already exists'
+			else:
+				shutil.copyfile(oldFile, newFile)
 		else:
-			shutil.copyfile(oldFile, newFile) 
+			print fileDirectory, ' this is getting ignored'
 	if p == []:
-		#pass
-		#print eee
 		if not os.path.exists(eee):
 			os.makedirs(eee)
-	if '.' in h:
-		#print h
-		k = h.find('.')
-		#print h[k:]
 	a = ''
 
 
@@ -205,39 +191,27 @@ while shotAmount != shotCounter:
 aaa = ''
 counter2 = 0
 for i in reversed(iterationList):
-		#print a
-	#if not os.path.exists(a):
-	#	os.makedirs(a)
 	if i[:1] == '\\':
 		ddd =  i[1:]
 	else:
 		ddd = i
-	#print ddd
-	#print ddd
 	s = re.compile(r'/*\\') # this finds the backslashes in the to be created directory
 	f = s.finditer(ddd)
 	g = [ x.span() for x in f ]
 	h= ddd[g[-1][0] : ][1:] # this is a long winded way, we already ahve this information when we parse the first item. Just get it from there?
 	p = [x for x in fileLibrary if h.endswith((x))]
 	if p != []:
-		#print h
-		#print fileDirectory
 		fileDirectory = ddd[:(-1*(len(h)) )] # finds the directory from where to copy and past it
-		oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
-		newFile = fileDirectory + h
-		if not os.path.exists(fileDirectory):
-			os.makedirs(fileDirectory)
-		if os.path.exists(newFile):
-			print 'file already exists'
-		else:
-			shutil.copyfile(oldFile, newFile) 
+		if fileDirectory.endswith(("\\")):
+			oldFile = defaultFileLocation + '\\' + [each for each in os.listdir(defaultFileLocation) if each.endswith(p[0])][0]
+			newFile = fileDirectory + h
+			if not os.path.exists(fileDirectory):
+				os.makedirs(fileDirectory)
+			if os.path.exists(newFile):
+				print 'file already exists'
+			else:
+				shutil.copyfile(oldFile, newFile) 
 	if p == []:
-		#pass
-		#print ddd
 		if not os.path.exists(ddd):
 			os.makedirs(ddd)
-	if '.' in h:
-		#print h
-		k = h.find('.')
-		#print h[k:]
 	aaa = ''

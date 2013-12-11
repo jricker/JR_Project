@@ -1,6 +1,7 @@
 import sys
 import os
 from functools import partial
+import JR_project_create_02
 from Tkinter import *
 from PIL import Image, ImageTk
 from tkFileDialog import askopenfilename, askdirectory
@@ -15,7 +16,7 @@ class Directory():
 		self.userName = os.path.expanduser("~")
 	def Run(self):
 		self.tk.geometry('200x400+600+300')
-		self.tk.iconbitmap(default= self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\icon.ico")
+		self.tk.iconbitmap(default= self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\UI\icon.ico")
 		#TITLE
 		self.tk.title('CINEMATICS')
 		# COLOURS
@@ -28,8 +29,8 @@ class Directory():
 		btnFont = 'Arial'
 		# BUTTONS
 		self.XMLBtn = Button(text = 'XML > DIR', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'XML') )
-		self.IMGBtn = Button(text = 'IMG > MOV', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'IMG') )
-		self.AVIBtn = Button(text = 'AVI > MOV', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'AVI') )
+		self.IMGBtn = Button(text = 'MOV', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'IMG') )
+		self.AVIBtn = Button(text = 'PRORES', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'AVI') )
 		self.RENAMEBtn = Button(text = 'RENAME', bg = self.btnColour1, fg = 'white', width = 200, height = 03, command = partial(self.assignValues, 'RENAME') )
 		# BUTTON POSITION
 		self.RENAMEBtn.pack(side = 'bottom' )
@@ -41,7 +42,7 @@ class Directory():
 		options['filetypes'] = [ ('XML Files', '.xml')] # add options to the dictionary
 		#print self.file_opt
 		# GHOST IMAGE
-		imageFile = self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\UI_header.jpg"
+		imageFile = self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\UI\UI_header.jpg"
 		image1 = ImageTk.PhotoImage(Image.open(imageFile))
 		panel1 = Label(image=image1)
 		#panel1.pack()
@@ -53,13 +54,7 @@ class Directory():
 		self.tk.mainloop()
 	def assignValues(self, value):
 		if value == 'XML':
-			filename = askopenfilename(**self.file_opt)
-			self.xmlValue = filename
-			if filename == '':
-				pass
-				#self.warningMessage('Please Select an XML')
-			else:
-				self.XMLBtn.configure(bg = self.btnColour2 )
+			self.XMLBtn.configure(bg = self.btnColour2 )
 		elif value == 'DIR':
 			directory = askdirectory()
 			self.directoryValue = directory

@@ -898,7 +898,7 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">46</attribute>
-			<attribute key="label" type="String">*NAME*_FINAL_EDIT.mov</attribute>
+			<attribute key="label" type="String">*NAME*_WIP_EDIT.mov</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">897.7642578125005</attribute>
 				<attribute key="y" type="double">2769.0144327402495</attribute>
@@ -909,7 +909,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">*NAME*_FINAL_EDIT.mov</attribute>
+				<attribute key="text" type="String">*NAME*_WIP_EDIT.mov</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="alignment" type="String">left</attribute>
@@ -1242,7 +1242,7 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">64</attribute>
-			<attribute key="label" type="String">*NAME*_FINAL_51.wav</attribute>
+			<attribute key="label" type="String">*NAME*_FINAL_5.1.wav</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">1105.7642578125005</attribute>
 				<attribute key="y" type="double">3005.565906317491</attribute>
@@ -1253,7 +1253,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">*NAME*_FINAL_51.wav</attribute>
+				<attribute key="text" type="String">*NAME*_FINAL_5.1.wav</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="alignment" type="String">left</attribute>

@@ -3,7 +3,7 @@ import os
 from functools import partial
 from Tkinter import *
 from tkFileDialog import askopenfilename, askdirectory
-class Directory():
+class Directorys():
 	def __init__(self):
 		self.tk = Tk()
 		self.directoryValue = ''
@@ -13,10 +13,10 @@ class Directory():
 		self.shotValue = ''
 		self.userName = os.path.expanduser("~")
 	def Run(self):
-		self.tk.geometry('200x400+600+300')
+		self.tk.geometry('200x180+600+300')
 		self.tk.iconbitmap(default= self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\icon.ico")
 		#TITLE
-		self.tk.title('CINEMATICS')
+		self.tk.title('DIRECTORy')
 		# COLOURS
 		bgColour = '#2f2f2f'
 		self.btnColour2 = '#098400'
@@ -37,9 +37,9 @@ class Directory():
 		self.scene_field.place(x=60, y= 8+labelOffset )
 		self.shot_field.place(x=60, y=33 + labelOffset )
 		# BUTTONS
-		self.directoryBtn = Button(text = 'DIR', bg = bgColour, fg = 'white', width = 200, height = 03 , command = partial(self.assignValues, 'DIR') )
-		self.XMLBtn = Button(text = 'XML', bg = bgColour, fg = 'white', width = 200 , height = 03 , command = partial(self.assignValues, 'XML') )
-		self.buildBtn = Button(text = 'BUILD', bg = bgColour, fg = 'white', width = 200 , height = 03 , command = partial(self.buildDirectory) )
+		self.directoryBtn = Button(text = 'DIR', bg = bgColour, fg = 'white', width = 200,  command = partial(self.assignValues, 'DIR') )
+		self.XMLBtn = Button(text = 'XML', bg = bgColour, fg = 'white', width = 200 ,  command = partial(self.assignValues, 'XML') )
+		self.buildBtn = Button(text = 'BUILD', bg = bgColour, fg = 'white', width = 200 , command = partial(self.buildDirectory) )
 		# BUTTON POSITION
 		self.buildBtn.pack(side = 'bottom' )
 		self.XMLBtn.pack(side = 'bottom' )
@@ -104,8 +104,8 @@ class Directory():
 	def __call__(self):
 		pass
 if __name__ == '__main__':
-	K = Directory()
-	K.Run()
+	A = Directorys()
+	A.Run()
 	#self.Run()
 #main(['scriptName', r'D:\Mountfield_Benzin\SHOTS\MF_BE_M4\PLATE\MF_BE_M4_00.tif', '-p']) # for testing purposes only
 #main(['scriptName', r'D:\Mountfield_Benzin\SHOTS\MF_BE_PV\RENDERS\2D_OUT\MF_BE_PV_KROVINOREZ_0001.jpg', '-p'])
