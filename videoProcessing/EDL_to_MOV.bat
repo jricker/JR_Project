@@ -1,0 +1,1 @@
+"%~1" -i "%~2" -y -ss %~4 -to %~5 -y -vcodec prores -profile:v 0 -s hd1080 "%~3"

@@ -1,0 +1,1 @@
+"%~1" -i "%~2" -y -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 "%~3"

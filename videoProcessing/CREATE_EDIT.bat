@@ -1,0 +1,1 @@
+"%~1" -f concat -i "%~2" -y -vcodec prores "%~3"
