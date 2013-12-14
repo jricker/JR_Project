@@ -11,6 +11,11 @@ MOV_in = []
 MOV_out = []
 MOV_newName = []
 counter = 0
+## RUN FFMPEG DEF
+def runFFMPEG(inputName, outputName, ffmpegProcess):
+	FFmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
+	encode = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\ffmpeg.bat "  +FFmpeg+ ' ' + inputName + ' ' + process+ ' ' + outputName )
+	os.system(encode)
 ## CREATE NEW EDIT FOLDER IF IT DOESN'T EXIST ALREADY
 if not os.path.exists(EDIT_dir):
 	os.makedirs(EDIT_dir)
@@ -41,19 +46,17 @@ for i in range( len(MOV_list) ):
 	MOV_list[i] = ''.join(MOV_dir + '\\' + MOV_list[i])
 	#print MOV_newName[i], ' new name'
 	#print MOV_list[i], ' old name'
-	print MOV_in[i], ' in point'
-	print MOV_out[i], ' out point'
+	#print MOV_in[i], ' in point'
+	#print MOV_out[i], ' out point'
 	# CALL THE ENCODING OF ALL EDIT FILES
-	FFmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
-	Action = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\EDL_to_MOV.bat "  +FFmpeg+ ' ' +MOV_list[i]+ ' ' +MOV_newName[i]+  ' ' +MOV_in[i]+ ' ' +MOV_out[i] )
-	os.system(Action)
+	runFFMPEG(inputName = MOV_list[i], outputName = MOV_newName[i], ffmpegProcess = '-y -ss %~4 -to %~5 -y -vcodec prores -profile:v 0 -s hd1080' )
 ## WRITE NEW NAMES OUT TO TXT FILE
 with open(( EDIT_dir + '\\' + 'EDL.txt'),'w') as file:
     for item in MOV_newName:
         print>>file, ('file ' + "'" + item + "'")
-##
-def stitchEdit():
-	FFmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
-	Action = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\CREATE_EDIT.bat "  +FFmpeg+ ' ' + ( EDIT_dir + '\\' + 'EDL.txt') + ' ' + ( EDIT_dir + '\\' + 'EDIT.mov' ) )
-	os.system(Action)
-stitchEdit()
+#def stitchEdit():
+#	FFmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
+#	Action = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\CREATE_EDIT.bat "  +FFmpeg+ ' ' + ( EDIT_dir + '\\' + 'EDL.txt') + ' ' + ( EDIT_dir + '\\' + 'EDIT.mov' ) )
+#	os.system(Action)
+## NOW STITCH THE FILES TOGETHER
+runFFMPEG(inputName = ( EDIT_dir + '\\' + 'EDL.txt'), outputName = ( EDIT_dir + '\\' + 'EDIT.mov' ) ,ffmpegProcess = '-y -f concat -vcodec prores')
