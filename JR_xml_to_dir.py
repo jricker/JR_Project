@@ -72,11 +72,6 @@ for child in root:
 								two = a[1].text
 								add = [one, two]
 								edgeList.append(add)
-#print 'folders = ', folderList
-#print 'shared = ', sharedFolderList
-#print 'files = ', fileList
-#print 'dir = ', directoryList
-#print 'connections = ', edgeList
 def getFileExtList (dirPath,uniq=True,sorted=True):
     extList=list()
     for dirpath,dirnames,filenames in os.walk(dirPath):
@@ -91,7 +86,7 @@ def getFileExtList (dirPath,uniq=True,sorted=True):
     return extList
 defaultFileLocation = userName + "\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\libraries\\files"
 fileLibrary = getFileExtList(defaultFileLocation)
-#print fileLibrary
+###
 total = []
 def createTotal():
 	for i in folderList:
@@ -167,8 +162,7 @@ for i in dirFinal:
 		if not os.path.exists(eee):
 			os.makedirs(eee)
 	a = ''
-
-
+###
 iterationList = []
 while sceneAmount != sceneCounter:
 	sceneCounter += 1
@@ -186,8 +180,7 @@ while shotAmount != shotCounter:
 	for i in shotList:
 		temp2 = i.replace('sh##', ('sh' + str(shotCounterA)) )
 		iterationList.append(temp2)
-
-
+###
 aaa = ''
 counter2 = 0
 for i in reversed(iterationList):
