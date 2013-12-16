@@ -10,10 +10,10 @@ sharedFolderList = []
 directoryList = []
 userName = os.path.expanduser("~")
 mainDirectory = userName + '\Desktop'
-masterXML = 'xml_test_07.xml'
-projectName = 'E3'
-sceneAmount = 3
-shotAmount = 10
+masterXML = 'network.xgml'
+projectName = 'ANNIVERSARY'
+sceneAmount = 1
+shotAmount = 1
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()
