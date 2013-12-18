@@ -1,0 +1,1 @@
+C:\Users\jricker\Documents\GitHub\JR_Project\invisible.vbs "python C:\Users\jricker\Documents\GitHub\JR_Project\test_runFromBatch.py"

@@ -1,1 +1,0 @@
-"%~1" %~2 -demuxer mov -nosound -ovc x264 -o %~3

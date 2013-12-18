@@ -1,1 +1,0 @@
-for %%a in ("*.*") do "C:\Users\jricker\Copy\R2\CINEMATIC_SCRIPTS\programs\FFMPEG\ffmpeg" -i "%%a" -c:v libx264 -preset slow -s hd1080 -crf 20 -c:a libvo_aacenc -b:a 128k "%%~na_H264.mp4"

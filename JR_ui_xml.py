@@ -14,7 +14,7 @@ class Directorys():
 		self.userName = os.path.expanduser("~")
 	def Run(self):
 		self.tk.geometry('200x180+600+300')
-		self.tk.iconbitmap(default= self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\icon.ico")
+		self.tk.iconbitmap(default= self.userName + "\Copy\GHOST\CINEMATIC_SCRIPTS\images\UI\icon.ico")
 		#TITLE
 		self.tk.title('DIRECTORy')
 		# COLOURS
@@ -63,7 +63,6 @@ class Directorys():
 			self.xmlValue = filename
 			if filename == '':
 				pass
-				#self.warningMessage('Please Select an XML')
 			else:
 				self.XMLBtn.configure(bg = self.btnColour2 )
 		elif value == 'DIR':
@@ -99,17 +98,12 @@ class Directorys():
 		dirs = 'C:\Users\jricker\Desktop\hello'
 		if not os.path.exists(dirs):
 			os.makedirs(dirs)
+			self.tk.destroy()
 		else:
 			print 'already exists'
+			self.tk.destroy()
 	def __call__(self):
 		pass
 if __name__ == '__main__':
-	A = Directorys()
-	A.Run()
-	#self.Run()
-#main(['scriptName', r'D:\Mountfield_Benzin\SHOTS\MF_BE_M4\PLATE\MF_BE_M4_00.tif', '-p']) # for testing purposes only
-#main(['scriptName', r'D:\Mountfield_Benzin\SHOTS\MF_BE_PV\RENDERS\2D_OUT\MF_BE_PV_KROVINOREZ_0001.jpg', '-p'])
-	
-	#main(sys.argv)
-#K = Directory()
-#K.Run()
+	K = Directorys()
+	K.Run()
