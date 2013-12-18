@@ -3,11 +3,13 @@ import os
 toAVI = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\vDub\\vdub64.exe"
 ffmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
 compression = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\settings\\vDub_compression\\vDub_avi_compression.vcf"
-original = "D:\\MOV\\EDIT\\EDIT.mov"
+original = "C:\\Users\\jricker\\Desktop\\10_second_AVI.avi"
 #original = "D:\\MOV\\E3_YOUTUBE_PRORES.mov" #"E:\\batch_test\\Shot_04_0001.tga"
 #output = "D:\\MOV\\E3_YOUTUBE_PRORES2.mov"#E:\\batch_test\\Shot_04"
-output = "D:\\MOV\\EDIT\\EDIT2.mov"
-final = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\CREATE_PRORES.bat "+ ffmpeg+ ' ' +original + ' ' + output )
+output = "C:\\Users\\jricker\\Desktop\\10_second_PRORES_01.mov"
+proresVersion = {'ProRes422_Proxy': 0, 'ProRes422_LT':1, 'ProRes422_Normal':2, 'ProRes422_HQ':3 }
+prores = proresVersion['ProRes422_Normal']
+final = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\CREATE_PRORES.bat "+ ffmpeg+ ' ' +original + ' ' + output + ' ' + str(prores) )
 os.system(final)
 #"%~4" -i "%~5.avi" -c:v libx264 -preset slow -s hd1080 -crf 20 -c:a libvo_aacenc -b:a 128k "%~5_H264.mp4" - THESE ARE THE DEFAULT ENCODING COMMANDS
 #"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe" "%~5_H264.mov" - PUT THIS BACK IN AT THE END AFTER DELETING THE AVI

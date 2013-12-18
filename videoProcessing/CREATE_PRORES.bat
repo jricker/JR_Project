@@ -1,1 +1,1 @@
-"%~1" -i "%~2" -probesize 512 -analyzeduration 200 -y -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 "%~3"
+"%~1" -i "%~2" -y -vcodec prores -profile:v %~4 -s hd1080 -bits_per_mb 8000 "%~3"
