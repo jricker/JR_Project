@@ -3,10 +3,10 @@ import os
 toAVI = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\vDub\\vdub64.exe"
 ffmpeg = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\programs\\FFMPEG\\ffmpeg"
 compression = "C:\\Users\\jricker\\Copy\\GHOST\\CINEMATIC_SCRIPTS\\settings\\vDub_compression\\vDub_avi_compression.vcf"
-original = "C:\\Users\\jricker\\Desktop\\10_second_AVI.avi"
+original = "C:\\Users\\jricker\\Desktop\\ULTIMATE_PROGRESSION_EPIC_JUMP_NO_BARS.avi"
 #original = "D:\\MOV\\E3_YOUTUBE_PRORES.mov" #"E:\\batch_test\\Shot_04_0001.tga"
 #output = "D:\\MOV\\E3_YOUTUBE_PRORES2.mov"#E:\\batch_test\\Shot_04"
-output = "C:\\Users\\jricker\\Desktop\\10_second_PRORES_01.mov"
+output = "C:\\Users\\jricker\\Desktop\\EPIC_JUMP_PRORES.mov"
 proresVersion = {'ProRes422_Proxy': 0, 'ProRes422_LT':1, 'ProRes422_Normal':2, 'ProRes422_HQ':3 }
 prores = proresVersion['ProRes422_Normal']
 final = ("C:\\Users\\jricker\\Documents\\GitHub\\JR_Project\\videoProcessing\\CREATE_PRORES.bat "+ ffmpeg+ ' ' +original + ' ' + output + ' ' + str(prores) )

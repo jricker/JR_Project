@@ -39,12 +39,12 @@ ff = [''.join(x for x in final)]
 bb = ff[0]
 #print bb
 print bb.strip()
-ll = "%CPYW%" "C:\Users\jricker\Documents\GitHub\JR_Project\JR.py"
+ll = '"%CPYW%" "C:\Users\jricker\Documents\GitHub\JR_Project\JR_ui_main.py"'
 dd = ll.encode('hex')
 print dd
 counter = 0
 regHEX = []
-for i in range(len(dd) ):
+for i in range(len(dd)/2 ):
   if counter > len(dd)-2 or counter == len(dd):
     pass
   else:
@@ -52,11 +52,4 @@ for i in range(len(dd) ):
   regHEX.append(o)
   counter +=2
 items = [''.join(x for x in regHEX)]
-print items[0][:counter*2]
-#for i in final:
-#	print i
-#	#print i
-#	#ff = ff.join(str(i))
-#print ff
-#a = hex_string.decode('utf-8')
-#print ascii_string
+print items[0][:-1]
