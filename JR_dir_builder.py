@@ -9,11 +9,11 @@ folderList = []
 sharedFolderList = []
 directoryList = []
 userName = os.path.expanduser("~")
-mainDirectory = userName + '\Desktop'
+mainDirectory = userName + '\\Desktop'
 masterXML = 'network.xgml'
 projectName = 'E3'
-sceneAmount = 4
-shotAmount = 10
+sceneAmount = 3
+shotAmount = 14
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()
