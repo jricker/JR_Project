@@ -31,7 +31,9 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 		# find a way to delete the created custom_reg file after it's used.
 	def img2mov(self, input_data):
 		compression = self.settings + '\\vDub_compression\\vDub_avi_compression.vcf'
-		input_data = self.rename(input_data) #renames the files in case they are incorrect
+		self.selection = input_data
+		input_data = self.rename(self.selection)
+		#input_data = self.rename(input_data) #renames the files in case they are incorrect
 		# !!
 		# use an if statement instead of seperate parent name and output names. If _ in string use this, else use . for name
 		output_data = input_data[:[i for i, letter in enumerate(input_data) if letter == '.'][-1] ] # find the last . in the string to create the name of the file for avi and mov output.
@@ -44,7 +46,7 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 		except TypeError:
 			parent_folder = input_data[:[i for i, letter in enumerate(input_data) if letter == '\\'][-1] ]
 		JPG_folder = input_data[:[i for i, letter in enumerate(input_data) if letter == '\\'][-1] ]+ '\\JPG_temp' # find the last . in the string to create the name of the file for avi and mov output.		
-		if parent_folder.endswith("RENDER"): # Find the render folder, should be -5 up as the parent_folder VAR dictates
+		if parent_folder.endswith("RENDER"): # Find the render folder, should be -5 up as the parent_folder VAR dictates?
 			parent_name = parent_folder + '\\01_MOV' + parent_name[[i for i, letter in enumerate(parent_name) if letter == '\\'][-1]: ]
 		###
 		if input_data.endswith('.exr'):
@@ -55,18 +57,22 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 			JPG_output =  JPG_folder + output_data[[i for i, letter in enumerate(input_data) if letter == '\\'][-1] : ]+'.jpg'
 			if not os.path.exists(JPG_folder):
 				os.makedirs(JPG_folder)
-			setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  JPG_output[:-4]+'_temp_0000.jpg' + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + parent_name + ' ' + self.vlc + ' ' + self.djv + ' ' + output_data+iteration+'.exr' + ' ' + JPG_output[:-4] )
-			#setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  JPG_output[:-4]+'_reformat_00000.jpg' + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + parent_name + ' ' + self.vlc + ' ' + self.djv + ' ' + output_data+"-10000.exr" + ' ' + JPG_output[:-4] )
+			setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  '"'+JPG_output[:-4]+'_temp_0000.jpg'+'"' + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + '"'+parent_name+'"' + ' ' + self.vlc + ' ' + self.djv + ' ' + '"'+output_data+iteration+'.exr'+'"' + ' ' + JPG_output[:-4] )
+			#setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  JPG_output[:-4]+'_reformat_00000.jpg' + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + '"'+parent_name+'"' + ' ' + self.vlc + ' ' + self.djv + ' ' + output_data+"-10000.exr" + ' ' + JPG_output[:-4] )
 		else:
 			batch_cmd = "IMG2MOV"
-			setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  input_data + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + parent_name + ' ' + self.vlc)
+			setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' +  '"'+input_data+'"' + ' ' + compression + ' ' + self.vdub + ' ' + self.ffmpeg + ' ' + '"'+parent_name+'"' + ' ' + self.vlc)
 		os.system(setup)
 		if os.path.exists(JPG_folder):
 			shutil.rmtree(JPG_folder) # remove temp JPG folder
 		# once the video is closed, open the window which houses the newly created MOV
 		# check if MOV folder exists
 		if os.path.exists( parent_folder+'\\01_MOV' ):
-			os.system('"''start '+parent_folder+'\\01_MOV'+'"') # have to make a fix for this if it doesn't export to an MOV folder and just does it to the recent directory
+			batch_cmd = "OPENFOLDER"
+			movFolder = parent_folder+'\\01_MOV'
+			setup2 = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' + '"'+movFolder+'"')
+			os.system(setup2)
+		#	os.system('"''start '+parent_folder+'\\01_MOV'+'"') # have to make a fix for this if it doesn't export to an MOV folder and just does it to the recent directory
 	def mov2prores(self, input_data):
 		batch_cmd = 'PRORES'
 		output_data = input_data[:[i for i, letter in enumerate(input_data) if letter == '.'][-1] ]+'_prores.mov'
@@ -149,7 +155,10 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 		pass
 	def exr2img(self, input_data = 'NA', format = '.tga', size = '1920 1080'):
 		batch_cmd = "EXR2IMG"
-		input_data = self.rename(input_data) #renames the files in case they are incorrect
+		self.selection = input_data
+		input_data = self.rename(self.selection)
+		#input_data = input_data[0] # must do this after the rename
+		#input_data = self.rename(input_data) #renames the files in case they are incorrect
 		iteration_length =  input_data[[i for i, letter in enumerate(input_data) if letter == '_'][-1] : ]
 		iteration = '-9'
 		for i in range(len(iteration_length[1:-5])):
@@ -159,7 +168,7 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 		if not os.path.exists(new_folder):
 			os.makedirs(new_folder)
 		new_output =  new_folder + output_data[[i for i, letter in enumerate(input_data) if letter == '\\'][-1] : ]+format
-		setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' + self.djv + ' ' +  output_data+iteration+'.exr' + ' ' + new_output+ ' '+ '"'+size+'"')
+		setup = (self.scripts + "\\JR_convert.bat " + batch_cmd + ' ' + self.djv + ' ' +  '"'+output_data+iteration+'.exr'+'"' + ' ' + '"'+new_output+'"'+ ' '+ '"'+size+'"')
 		os.system(setup)
 	def regHex2text(self, input_data):
 		if input_data.endswith('.reg'):
@@ -201,19 +210,23 @@ class Convert(System, Project): # CREATE A MASTER BAT FILE WHICH HOLDS ALL OF TH
 		REGHEX_from_txt = regHexJoin[0][:-1]
 		return REGHEX_from_txt
 if __name__ == '__main__':
-	converion = Convert()
+	conversion = Convert()
 	if sys.argv[2] == 'IMG2MOV':
-		converion.img2mov(sys.argv[1])
+		conversion.img2mov(sys.argv[1])
 	elif sys.argv[2] == 'RENAME':
-		converion.rename(sys.argv[1])
+		conversion.rename( sys.argv[1])
 	elif sys.argv[2] == 'PRORES':
-		converion.mov2prores(sys.argv[1])
+		conversion.mov2prores(sys.argv[1])
 	elif sys.argv[2] == 'EXR2IMG':
-		converion.exr2img(input_data = sys.argv[1])
+		conversion.exr2img(input_data = sys.argv[1])
 	elif sys.argv[2] == 'MOV2CUTDOWN':
 		pass
 	elif sys.argv[2] == 'EDL2MOV':
-		converion.edl2mov(sys.argv[1])
+		conversion.edl2mov(sys.argv[1])
 	else:
 		pass
 	#converion.regWriter()
+	#c = 'C:\\Users\\jricker\\Desktop\\GC\\03_RENDER\\GC_sc01\\GC_sc01_sh010\\EXR\\4K\\GC_sc01_sh010_0002.exr'
+	#conversion.exr2img(c)
+	#B = 'E:\\Samsung\\5760x3240_Samsung.avi'
+	#converion.mov2prores(B)

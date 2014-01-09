@@ -9,11 +9,12 @@ folderList = []
 sharedFolderList = []
 directoryList = []
 userName = os.path.expanduser("~")
+#mainDirectory = '\\eucr-fs1.eu.ad.ea.com\\Studio\\HawaiiMarketing\\CINEMATICS\\MERCURY NFS15'
 mainDirectory = userName + '\\Desktop'
 masterXML = 'network.xgml'
-projectName = 'GC'
-sceneAmount = 3
-shotAmount = 4
+projectName = 'GPMM'
+sceneAmount = 1
+shotAmount = 52
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()

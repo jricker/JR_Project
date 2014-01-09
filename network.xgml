@@ -1662,7 +1662,7 @@
 			<attribute key="id" type="int">86</attribute>
 			<attribute key="label" type="String">*NAME*_WIP_EDIT.mov</attribute>
 			<section name="graphics">
-				<attribute key="x" type="double">1170.8694629583683</attribute>
+				<attribute key="x" type="double">1378.8694629583683</attribute>
 				<attribute key="y" type="double">3143.811583344152</attribute>
 				<attribute key="w" type="double">148.0</attribute>
 				<attribute key="h" type="double">26.0</attribute>
@@ -2067,29 +2067,10 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">107</attribute>
-			<attribute key="label" type="String">02_CUTDOWNS</attribute>
-			<section name="graphics">
-				<attribute key="x" type="double">754.8694629583683</attribute>
-				<attribute key="y" type="double">2641.6149304580986</attribute>
-				<attribute key="w" type="double">148.0</attribute>
-				<attribute key="h" type="double">30.0</attribute>
-				<attribute key="type" type="String">rectangle</attribute>
-				<attribute key="fill" type="String">#FFCC00</attribute>
-				<attribute key="outline" type="String">#000000</attribute>
-			</section>
-			<section name="LabelGraphics">
-				<attribute key="text" type="String">02_CUTDOWNS</attribute>
-				<attribute key="fontSize" type="int">12</attribute>
-				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="anchor" type="String">c</attribute>
-			</section>
-		</section>
-		<section name="node">
-			<attribute key="id" type="int">108</attribute>
 			<attribute key="label" type="String">*NAME*_sc##_sh##.mov</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">929.2423019827586</attribute>
-				<attribute key="y" type="double">2832.167591312842</attribute>
+				<attribute key="y" type="double">2953.867065598556</attribute>
 				<attribute key="w" type="double">148.0</attribute>
 				<attribute key="h" type="double">26.0</attribute>
 				<attribute key="type" type="String">rectangle</attribute>
@@ -2105,10 +2086,10 @@
 			</section>
 		</section>
 		<section name="node">
-			<attribute key="id" type="int">109</attribute>
+			<attribute key="id" type="int">108</attribute>
 			<attribute key="label" type="String">*NAME*_WIP_EDIT.edl</attribute>
 			<section name="graphics">
-				<attribute key="x" type="double">1170.8694629583683</attribute>
+				<attribute key="x" type="double">1378.8694629583683</attribute>
 				<attribute key="y" type="double">3188.5120520019764</attribute>
 				<attribute key="w" type="double">148.0</attribute>
 				<attribute key="h" type="double">26.0</attribute>
@@ -2121,6 +2102,25 @@
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="alignment" type="String">left</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">109</attribute>
+			<attribute key="label" type="String">FINAL_FOR_GRADE</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">1170.8694629583683</attribute>
+				<attribute key="y" type="double">2890.8054732343144</attribute>
+				<attribute key="w" type="double">148.0</attribute>
+				<attribute key="h" type="double">26.0</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">FINAL_FOR_GRADE</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
@@ -3799,35 +3799,13 @@
 			</section>
 		</section>
 		<section name="edge">
-			<attribute key="source" type="int">20</attribute>
+			<attribute key="source" type="int">106</attribute>
 			<attribute key="target" type="int">107</attribute>
 			<section name="graphics">
 				<attribute key="fill" type="String">#000000</attribute>
 				<attribute key="targetArrow" type="String">standard</attribute>
 				<section name="Line">
 					<section name="point">
-						<attribute key="x" type="double">534.8694629583683</attribute>
-						<attribute key="y" type="double">2519.258680458097</attribute>
-					</section>
-					<section name="point">
-						<attribute key="x" type="double">534.8694629583683</attribute>
-						<attribute key="y" type="double">2641.6149304580986</attribute>
-					</section>
-					<section name="point">
-						<attribute key="x" type="double">754.8694629583683</attribute>
-						<attribute key="y" type="double">2641.6149304580986</attribute>
-					</section>
-				</section>
-			</section>
-		</section>
-		<section name="edge">
-			<attribute key="source" type="int">106</attribute>
-			<attribute key="target" type="int">108</attribute>
-			<section name="graphics">
-				<attribute key="fill" type="String">#000000</attribute>
-				<attribute key="targetArrow" type="String">standard</attribute>
-				<section name="Line">
-					<section name="point">
 						<attribute key="x" type="double">754.8694629583683</attribute>
 						<attribute key="y" type="double">2598.446180458097</attribute>
 					</section>
@@ -3837,14 +3815,14 @@
 					</section>
 					<section name="point">
 						<attribute key="x" type="double">929.2423019827586</attribute>
-						<attribute key="y" type="double">2832.167591312842</attribute>
+						<attribute key="y" type="double">2953.867065598556</attribute>
 					</section>
 				</section>
 			</section>
 		</section>
 		<section name="edge">
 			<attribute key="source" type="int">87</attribute>
-			<attribute key="target" type="int">109</attribute>
+			<attribute key="target" type="int">108</attribute>
 			<section name="graphics">
 				<attribute key="fill" type="String">#000000</attribute>
 				<attribute key="targetArrow" type="String">standard</attribute>
@@ -3859,7 +3837,37 @@
 					</section>
 					<section name="point">
 						<attribute key="x" type="double">1170.8694629583683</attribute>
+						<attribute key="y" type="double">3143.811583344152</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">1170.8694629583683</attribute>
 						<attribute key="y" type="double">3188.5120520019764</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">1378.8694629583683</attribute>
+						<attribute key="y" type="double">3188.5120520019764</attribute>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">23</attribute>
+			<attribute key="target" type="int">109</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+				<section name="Line">
+					<section name="point">
+						<attribute key="x" type="double">962.8694629583683</attribute>
+						<attribute key="y" type="double">2519.258680458097</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">962.8694629583683</attribute>
+						<attribute key="y" type="double">2890.8054732343144</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">1170.8694629583683</attribute>
+						<attribute key="y" type="double">2890.8054732343144</attribute>
 					</section>
 				</section>
 			</section>
