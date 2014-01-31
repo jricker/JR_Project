@@ -24,7 +24,7 @@ echo Ok, done
 %5 -i %6.avi -y -vcodec prores -profile:v 0 -s hd1080 -bits_per_mb 8000 %6.mov
 del %6.avi
 ::touch -m "%~6.mov"
-%7 %6.mov
+::%7 %6.mov
 goto END
 ::
 :EXR2IMG
