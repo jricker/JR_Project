@@ -12,9 +12,10 @@ userName = os.path.expanduser("~")
 #mainDirectory = '\\eucr-fs1.eu.ad.ea.com\\Studio\\HawaiiMarketing\\CINEMATICS\\MERCURY NFS15'
 mainDirectory = userName + '\\Desktop'
 masterXML = 'network.xgml'
-projectName = 'GPMM'
+projectName = 'RAZER'
+
 sceneAmount = 1
-shotAmount = 52
+shotAmount = 1
 ############################
 tree = ET.parse(masterXML)
 root = tree.getroot()

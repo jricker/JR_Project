@@ -2,7 +2,8 @@ import os
 import JR_convert_class
 import shutil
 convert = JR_convert_class.Convert()
-directory = "C:/Users/jricker/Documents/Ghost Games/Need for Speed(TM) Rivals/Screenshots"
+directory = "\\\\eucr-fs1.eu.ad.ea.com\\Studio\\HawaiiMarketing\\CINEMATICS\\JUPITER NFS14\\0022 DLC_Koenig\\03_RENDER"
+#directory = "C:/Users/jricker/Documents/Ghost Games/Need for Speed(TM) Rivals/Screenshots"
 screenshotDirectory = []
 movList = []
 newMovDir = []
@@ -24,7 +25,9 @@ def findMovies (dirPath,uniq=True,sorted=True):
             	movList.append(dirpath + '\\' + file)
             	newMovDir.append(directory + '\\' + file)
 findScreenshots()
-findMovies(directory)
+#for i in finalSet[0]:
+#	print i
+#findMovies(directory)
 for i in movList:
 	print i
 def createMOV():
@@ -36,7 +39,10 @@ def createMOV():
 					firstImage = file
 					break
        		item = i+'\\'+firstImage
+       	print item
+       		#convert.img2mov(item)
 def moveMovies():
 	for i in range(len(movList)):
 		shutil.move(movList[i], newMovDir[i])
-moveMovies()
+#moveMovies()
+createMOV()

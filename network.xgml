@@ -2080,6 +2080,25 @@
 				<attribute key="text" type="String">ANIMS FROM RENDERS</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">108</attribute>
+			<attribute key="label" type="String">10_MANTIS</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">478.304965059457</attribute>
+				<attribute key="y" type="double">4841.807220886478</attribute>
+				<attribute key="w" type="double">169.54075675675676</attribute>
+				<attribute key="h" type="double">30.0</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">10_MANTIS</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="model"/>
 			</section>
 		</section>
@@ -3799,6 +3818,28 @@
 			<section name="graphics">
 				<attribute key="fill" type="String">#000000</attribute>
 				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">98</attribute>
+			<attribute key="target" type="int">108</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+				<section name="Line">
+					<section name="point">
+						<attribute key="x" type="double">320.86946295836833</attribute>
+						<attribute key="y" type="double">2218.221597374394</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">320.86946295836833</attribute>
+						<attribute key="y" type="double">4841.807220886478</attribute>
+					</section>
+					<section name="point">
+						<attribute key="x" type="double">478.304965059457</attribute>
+						<attribute key="y" type="double">4841.807220886478</attribute>
+					</section>
+				</section>
 			</section>
 		</section>
 	</section>
